@@ -11,7 +11,7 @@ A numeric matrix with samples as rows and features as columns.
 Derived from published cow rumen multi-omics analysis.
 }
 \usage{
-Metatranscriptomics
+data(Metatranscriptomics)
 }
 \description{
 A processed metatranscriptomics feature-abundance matrix used as an

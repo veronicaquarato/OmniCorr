@@ -17,7 +17,14 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Shashank Gupta \email{bioinformaticssrm2011@gmail.com} (\href{https://orcid.org/0000-0001-8839-7003}{ORCID})
+\strong{Maintainer}: Veronica Quarato \email{vequa7472@nmbu.no} (\href{https://orcid.org/0009-0008-4049-9746}{ORCID})
+
+Authors:
+\itemize{
+  \item Veronica Quarato \email{vequa7472@nmbu.no} (\href{https://orcid.org/0009-0008-4049-9746}{ORCID})
+  \item Shashank Gupta \email{bioinformaticssrm2011@gmail.com} (\href{https://orcid.org/0000-0001-8839-7003}{ORCID})
+  \item Wanxin Lai
+}
 
 }
 \keyword{internal}

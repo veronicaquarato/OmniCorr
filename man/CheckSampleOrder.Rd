@@ -18,3 +18,12 @@ A list with df1 and df2 reordered to have identical rownames and order
 Ensures that two data frames or matrices contain identical samples and
 reorders the second dataset to match the first.
 }
+\examples{
+df1 <- matrix(1:6, nrow = 3,
+              dimnames = list(c("S1", "S2", "S3"), c("A", "B")))
+df2 <- matrix(7:12, nrow = 3,
+              dimnames = list(c("S3", "S1", "S2"), c("C", "D")))
+result <- CheckSampleOrder(df1, df2)
+result$df2
+
+}

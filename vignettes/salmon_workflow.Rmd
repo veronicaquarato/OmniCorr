@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 ## Overview
 
 This vignette demonstrates the **core OmniCorr workflow** using the salmon multi-omics dataset  
-(which serves as the main example in the OmniCorr manuscript).
+(which serves as the main example in the
+OmniCorr manuscript).
 
 Main steps shown in this document:
 
@@ -38,8 +39,8 @@ The example datasets distributed with **OmniCorr** were generated from:
 - Metagenomics  
 - Metatranscriptomics
 
-Complete preprocessing workflows (normalization, filtering, WGCNA-based feature clustering, etc.)  
-are documented in:
+Complete preprocessing workflows (normalization, filtering,
+WGCNA-based feature clustering, etc.) are documented in:
 
 ```
 raw-data/
@@ -55,7 +56,7 @@ The final processed objects are saved as `.rda` files and shipped with the packa
 
 ## Load OmniCorr + example data
 
-```r
+```{r load-data}
 library(OmniCorr)
 
 data(Transcriptomics)
@@ -73,7 +74,7 @@ data(metadata)
 
 All omics layers **must** contain exactly the same samples in the **same order**.
 
-```r
+```{r check-sample-alignment}
 # Quick check
 all(
   rownames(Transcriptomics) == rownames(Metagenomics) &
@@ -83,30 +84,34 @@ all(
 
 If order is wrong / samples are missing → use the helper function:
 
-```r
-df_list <- CheckSampleOrder(Transcriptomics, Metagenomics, Metatranscriptomics)
+```{r fix-sample-order}
+df_list <- CheckSampleOrder(Transcriptomics, Metagenomics)
 
-Transcriptomics   <- df_list[[1]]
-Metagenomics      <- df_list[[2]]
-Metatranscriptomics <- df_list[[3]]
+Transcriptomics <- df_list$df1
+Metagenomics <- df_list$df2
+
+df_list <- CheckSampleOrder(Transcriptomics, Metatranscriptomics)
+
+Transcriptomics <- df_list$df1
+Metatranscriptomics <- df_list$df2
 ```
 
 ## Workflow steps
 
 ### Step 1 – Feature clustering (using reference layer = Transcriptomics)
 
-```r
+```{r feature-clustering}
 library(WGCNA)
 
 dendro <- hclust(
-  dist = as.dist(1 - bicor(Transcriptomics, maxPOutliers = 0.05)),
+  d = as.dist(1 - bicor(Transcriptomics, maxPOutliers = 0.05)),
   method = "ward.D2"
 )
 ```
 
 ### Step 2 – Transcriptomics reference heatmap
 
-```r
+```{r reference-heatmap}
 library(pheatmap)
 
 tx_heatmap <- pheatmap(
@@ -122,7 +127,7 @@ tx_heatmap <- pheatmap(
 
 ### Step 3 – Cross-omics correlation analysis
 
-```r
+```{r cross-omics-correlations}
 # Transcriptomics ↔ Metagenomics
 corr_mg <- calculate_correlations(
   df1 = Transcriptomics,
@@ -140,14 +145,14 @@ corr_mt <- calculate_correlations(
 
 Each result contains:
 
-- `$correlation`  
-- `$pval`  
-- `$padj`  
+- `$correlation`
+- `$p_value`
+- `$p_value_adj`
 - `$signif_matrix` (the stars/symbols matrix)
 
 ### Step 4 – Beautiful aligned correlation heatmaps
 
-```r
+```{r correlation-heatmaps}
 library(RColorBrewer)
 
 heatmap_colors <- colorRampPalette(rev(brewer.pal(11, "RdBu")))(51)
@@ -181,7 +186,7 @@ hm_mt <- pheatmap(
 
 ### Nice combined layout (optional but very recommended)
 
-```r
+```{r combined-layout}
 library(cowplot)
 
 plot_grid(
@@ -196,7 +201,7 @@ plot_grid(
 
 ### Bonus: Correlation with metadata
 
-```r
+```{r metadata-correlation}
 corr_meta <- calculate_correlations(
   df1 = Transcriptomics,
   df2 = metadata,
@@ -226,4 +231,7 @@ This vignette shows the **core OmniCorr workflow** using the salmon multi-omics 
 - Other case studies → look for Case_Study_2 (cattle)
 
 Good luck with your multi-omics integration projects! 🐟
+
+```{r session-info}
+sessionInfo()
 ```

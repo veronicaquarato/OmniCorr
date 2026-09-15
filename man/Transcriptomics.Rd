@@ -11,7 +11,7 @@ A numeric matrix with samples as rows and features as columns.
 Derived from published cow rumen multi-omics analysis.
 }
 \usage{
-Transcriptomics
+data(Transcriptomics)
 }
 \description{
 A processed transcriptomics expression matrix used as an example

@@ -11,7 +11,7 @@ A numeric matrix with samples as rows and features as columns.
 Derived from published cow rumen multi-omics analysis.
 }
 \usage{
-Metagenomics
+data(Metagenomics)
 }
 \description{
 A processed metagenomics feature-abundance matrix used as an example

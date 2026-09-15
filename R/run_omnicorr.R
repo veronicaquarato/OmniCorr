@@ -13,7 +13,7 @@
 #' @param reference_layer Numeric matrix/data.frame (samples x features).
 #' @param comparison_layers Named list of numeric matrices/data.frames.
 #' @param metadata Optional numeric matrix/data.frame (samples x variables).
-#' #' @param reference_name Title for the reference heatmap.
+#' @param reference_name Title for the reference heatmap.
 #' @param comparison_names Optional titles for comparison heatmaps.
 #' @param metadata_name Title for metadata heatmap.
 #' @param method Correlation method: `"pearson"`, `"spearman"`, `"kendall"`.
@@ -29,6 +29,22 @@
 #' @param verbose Print progress messages.
 #'
 #' @return Invisibly returns a `ComplexHeatmap::HeatmapList`.
+#'
+#' @examples
+#' reference <- matrix(
+#'   rnorm(20),
+#'   nrow = 5,
+#'   dimnames = list(paste0("S", 1:5), paste0("Gene", 1:4))
+#' )
+#' comparison <- matrix(
+#'   rnorm(15),
+#'   nrow = 5,
+#'   dimnames = list(paste0("S", 1:5), paste0("Taxon", 1:3))
+#' )
+#' result <- run_omnicorr(
+#'   reference_layer = reference,
+#'   comparison_layers = list(Microbiome = comparison)
+#' )
 #'
 #' @importFrom ComplexHeatmap Heatmap draw
 #' @importFrom circlize colorRamp2
@@ -110,7 +126,7 @@ run_omnicorr <- function(
   
   if(use == "all.obs"){
     if(anyNA(reference_layer) ||
-       any(sapply(comparison_layers, anyNA)) ||
+       any(vapply(comparison_layers, anyNA, logical(1))) || 
        (!is.null(metadata) && anyNA(metadata))){
       warning("Missing values detected. Switching to 'pairwise.complete.obs'.")
       use <- "pairwise.complete.obs"

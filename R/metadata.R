@@ -22,6 +22,8 @@
 #'
 #' @source Information was collected from the study samples.
 #'
+#' @return A data frame containing sample metadata.
+#'
 #' @examples
 #' # View the first few rows of the metadata
 #' head(metadata)

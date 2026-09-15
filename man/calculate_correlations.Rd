@@ -14,21 +14,22 @@ calculate_correlations(
 )
 }
 \arguments{
-\item{df1}{A data frame or matrix containing the first set of variables to be correlated.
-Rows are samples, columns are variables (e.g., genes, proteins, metabolites).}
+\item{df1}{A data frame or matrix containing the first set of variables
+to be correlated. Rows are samples, columns are variables
+(e.g., genes, proteins, metabolites).}
 
-\item{df2}{A data frame or matrix containing the second set of variables to be correlated.
-Rows are samples, columns are variables.}
+\item{df2}{A data frame or matrix containing the second set of variables
+to be correlated. Rows are samples, columns are variables.}
 
-\item{method}{The correlation method to be used.
-Default is "pearson". Other options include "spearman" and "kendall".}
+\item{method}{The correlation method to be used. Default is "pearson".
+Other options include "spearman" and "kendall".}
 
-\item{adjust_method}{Method for adjusting the p-values for multiple testing.
-Default is "fdr". If "none", no adjustment is applied.
+\item{adjust_method}{Method for adjusting the p-values for multiple
+testing. Default is "fdr". If "none", no adjustment is applied.
 Supports all methods from \code{p.adjust.methods}.}
 
-\item{use}{Handling of missing data.
-One of "all.obs" or "pairwise.complete.obs".}
+\item{use}{Handling of missing data. One of "all.obs" or
+"pairwise.complete.obs".}
 
 \item{show_significance}{How to represent significance in the output.
 One of "stars", "p_value", or "correlation".}
@@ -41,12 +42,14 @@ A list containing:
 \item{signif_matrix}{Matrix of significance stars, p-values, or correlations.}
 }
 \description{
-This function calculates the correlation matrix between the columns of two data frames.
+This function calculates the correlation matrix between the columns
+of two data frames.
 }
 \details{
 Pearson and Spearman correlations are computed using
 \code{WGCNA::corAndPvalue} for efficiency.
-Kendall correlation uses \code{cor.test} in a loop and may be slow for large datasets.
+Kendall correlation uses \code{cor.test} in a loop and may be slow
+for large datasets.
 }
 \examples{
 data(Transcriptomics)

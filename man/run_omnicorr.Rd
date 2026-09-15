@@ -29,8 +29,9 @@ run_omnicorr(
 
 \item{comparison_layers}{Named list of numeric matrices/data.frames.}
 
-\item{metadata}{Optional numeric matrix/data.frame (samples x variables).
-#' @param reference_name Title for the reference heatmap.}
+\item{metadata}{Optional numeric matrix/data.frame (samples x variables).}
+
+\item{reference_name}{Title for the reference heatmap.}
 
 \item{comparison_names}{Optional titles for comparison heatmaps.}
 
@@ -70,4 +71,21 @@ The reference layer is displayed as an expression heatmap with optional
 clustering of features and samples. Correlation heatmaps for comparison
 layers and metadata are aligned to the same reference feature order to
 ensure consistent interpretation across panels.
+}
+\examples{
+reference <- matrix(
+  rnorm(20),
+  nrow = 5,
+  dimnames = list(paste0("S", 1:5), paste0("Gene", 1:4))
+)
+comparison <- matrix(
+  rnorm(15),
+  nrow = 5,
+  dimnames = list(paste0("S", 1:5), paste0("Taxon", 1:3))
+)
+result <- run_omnicorr(
+  reference_layer = reference,
+  comparison_layers = list(Microbiome = comparison)
+)
+
 }
