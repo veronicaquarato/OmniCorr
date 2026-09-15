@@ -20,15 +20,14 @@ Authors@R:
             role = "aut"
         )
     )
-Description: OmniCorr is an R package-style framework for correlation-based
-    integration and visualization of multi-omics datasets, including
-    transcriptomics, metatranscriptomics, metagenomics, metaproteomics,
-    and associated sample metadata. The package computes pairwise correlations
-    between independently processed omics layers and provides flexible tools
-    for organizing and visualizing cross-omics associations using aligned
-    heatmaps and optional network-style visualizations. OmniCorr is designed
-    to complement existing preprocessing and network inference workflows
-    rather than replace them.
+Description: OmniCorr is an R package for correlation-based integration and
+    visualization of multi-omics datasets, including transcriptomics,
+    metatranscriptomics, metagenomics, metaproteomics, and associated sample
+    metadata. The package computes pairwise correlations between independently
+    processed omics layers and provides flexible tools for organizing and
+    visualizing cross-omics associations using aligned heatmaps and optional
+    network-style visualizations. OmniCorr is designed to complement existing
+    preprocessing and network inference workflows rather than replace them.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
