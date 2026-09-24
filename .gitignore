@@ -1,0 +1,16 @@
+.Rproj.user
+inst/doc
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+OmniCorr.BiocCheck/
+OmniCorr.Rproj
+
+*.Rcheck/
+*.tar.gz
+
+Case_Study_2/
+raw-data/
+.DS_Store
+OmniCorr.BiocCheck/

@@ -1,0 +1,23 @@
+---
+title: "OmniCorr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{OmniCorr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r knitr-setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(OmniCorr)
+```
+
+```{r session-info}
+sessionInfo()
+```

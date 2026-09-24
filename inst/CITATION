@@ -1,0 +1,14 @@
+bibentry(
+  bibtype = "Article",
+  title = "OmniCorr: An R package for visualizing putative host-microbiome interactions using multi-omics data",
+  author = c(
+    person("Shashank", "Gupta"),
+    person("Veronica", "Quarato"),
+    person("Wanxin", "Lai")
+  ),
+  journal = "Bioinformatics Advances",
+  year = 2026,
+  volume = "6",
+  number = "1",
+  doi = "10.1093/bioadv/vbag057"
+)
