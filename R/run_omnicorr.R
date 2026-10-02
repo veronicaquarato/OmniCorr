@@ -60,10 +60,10 @@ run_omnicorr <- function(
     reference_name = "Reference Layer",
     comparison_names = NULL,
     metadata_name = "Metadata",
-    method = "pearson",
-    adjust_method = "fdr",
-    use = "all.obs",
-    show_significance = "stars",
+    method = c("pearson", "spearman", "kendall"),
+    adjust_method = c("fdr", "none", stats::p.adjust.methods),
+    use = c("all.obs", "pairwise.complete.obs"),
+    show_significance = c("stars", "p_value", "correlation"),
     cluster_reference_rows = TRUE,
     cluster_reference_columns = TRUE,
     show_row_names = TRUE,
@@ -81,12 +81,10 @@ run_omnicorr <- function(
     }
   }
   
-  method <- match.arg(method, c("pearson","spearman","kendall"))
-  use <- match.arg(use, c("all.obs","pairwise.complete.obs"))
-  show_significance <- match.arg(show_significance,
-                                 c("stars","p_value","correlation"))
-  adjust_method <- match.arg(adjust_method,
-                             c("none", stats::p.adjust.methods))
+  method <- match.arg(method)
+  use <- match.arg(use)
+  show_significance <- match.arg(show_significance)
+  adjust_method <- match.arg(adjust_method)
   
   reference_layer <- as.matrix(reference_layer)
   

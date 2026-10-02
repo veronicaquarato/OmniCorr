@@ -46,10 +46,10 @@
 calculate_correlations <- function(
     df1,
     df2,
-    method = "pearson",
-    adjust_method = "fdr",
-    use = "all.obs",
-    show_significance = "stars"
+    method = c("pearson", "spearman", "kendall"),
+    adjust_method = c("fdr", "none", stats::p.adjust.methods),
+    use = c("all.obs", "pairwise.complete.obs"),
+    show_significance = c("stars", "p_value", "correlation")
 ) {
   
   if (!requireNamespace("WGCNA", quietly = TRUE)) {
@@ -66,16 +66,10 @@ calculate_correlations <- function(
     stop("df1 and df2 must have the same number of rows (samples).")
   }
   
-  method <- match.arg(method, c("pearson", "spearman", "kendall"))
-  use <- match.arg(use, c("all.obs", "pairwise.complete.obs"))
-  adjust_method <- match.arg(
-    adjust_method,
-    c("none", stats::p.adjust.methods)
-  )
-  show_significance <- match.arg(
-    show_significance,
-    c("stars", "p_value", "correlation")
-  )
+  method <- match.arg(method)
+  use <- match.arg(use)
+  adjust_method <- match.arg(adjust_method)
+  show_significance <- match.arg(show_significance)
   
   combined_data <- cbind(df1, df2)
   
