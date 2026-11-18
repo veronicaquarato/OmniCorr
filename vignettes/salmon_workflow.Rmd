@@ -1,4 +1,3 @@
-```
 ---
 title: "OmniCorr: Salmon multi-omics integration workflow"
 output: rmarkdown::html_vignette
