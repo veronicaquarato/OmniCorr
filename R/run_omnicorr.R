@@ -180,12 +180,14 @@ run_omnicorr <- function(
   }
 
   if(verbose){
-    message("==================================================")
-    message("OmniCorr Multi-Omics Integration")
-    message("==================================================")
-    message("Samples: ", nrow(reference_layer))
-    message("Reference Features: ", ncol(reference_layer))
-    message("Sample alignment verified")
+    message(
+      "==================================================",
+      "OmniCorr Multi-Omics Integration",
+      "==================================================",
+      "Samples: ", nrow(reference_layer),
+      "Reference Features: ", ncol(reference_layer),
+      "Sample alignment verified"
+    )
   }
 
   feature_dendro <- FALSE
@@ -332,8 +334,10 @@ run_omnicorr <- function(
   )
 
   if(verbose){
-    message("OmniCorr integration complete")
-    message("==================================================")
+    message(
+      "OmniCorr integration complete",
+      "=================================================="
+    )
   }
 
   invisible(ht)
